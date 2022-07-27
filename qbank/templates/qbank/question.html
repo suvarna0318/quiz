@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form action="{% url 'questions' %}" method='POST'>
+		{% csrf_token %}
+	question display:
+	{% for que in objects %}
+	<h2>{{que.question_text}}</h2>
+	{% for i in que.answer_set.all %}
+
+	<input type="radio" name="choice" id="1" value="{{i.choice1}}">
+    <label for="1">{{i.choice1}}</label><br>
+    <input type="radio" name="choice" id="2" value="{{i.choice2}}">
+    <label for="2">{{i.choice2}}</label><br>
+    <input type="radio" name="choice" id="3" value="{{i.choice3}}">
+    <label for="3">{{i.choice3}}</label><br>
+    <input type="radio" name="choice" id="4" value="{{i.choice4}}">
+    <label for="4">{{i.choice4}}</label><br>
+    {% if ans %}
+    <h4>Ans:{{ans}}</h4>
+    {% else %}
+    <h4>Ans:</h4>
+    {% endif %}
+	{% endfor %}
+	<input type="submit"></input>
+	{% endfor %}
+
+	
+</form>
+
+
+
+</body>
+</html>

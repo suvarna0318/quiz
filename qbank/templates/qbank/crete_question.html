@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<form action="{% url 'createQuestion' %}" method="POST">
+{% csrf_token %}
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{{form.as_p}}
+<input type="submit"></input>
+</form>
+</body>
+</html>
