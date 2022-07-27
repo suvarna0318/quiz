@@ -20,6 +20,9 @@ from qbank import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/',views.home,name='home'),
+    path('all_questions/',views.all_questions,name='all_questions'),
+    path('single_question/<int:pk>/',views.single_question,name='single_question'),
+    path('delete_question/<int:id>/',views.delete_question,name='delete_question'),
     path('questions/',views.questions,name='questions'),
     path('createQuestion/',views.createQuestion,name='createQuestion'),
     path('createAnswer/',views.createAnswer,name='createAnswer'),

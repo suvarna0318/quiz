@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form action="{% url 'questions' %}" method='POST' style="font-size:20px;">
+		{% csrf_token %}
+	question display:
+	<h4>{{object.question_text}}<button><a href="{% url 'delete_question' object.id %}" class="btn btn-danger" >Delete</a></button></h4><br>
+	{% for i in object.answer_set.all %}
+	<input type="radio" name="choice" id="1" value="{{i.chice1}}">
+    <label for="1">{{i.choice1}}</label><br>
+    <input type="radio" name="choice" id="2" value="{{i.choice2}}">
+    <label for="2">{{i.choice2}}</label><br>
+    <input type="radio" name="choice" id="3" value="{{i.choice3}}">
+    <label for="3">{{i.choice3}}</label><br>
+    <input type="radio" name="choice" id="4" value="{{i.choice4}}">
+    <label for="4">{{i.choice4}}</label><br>
+    {% endfor %}
+    <br>
+	<button class="btn btn-deault"><a href="{% url 'all_questions' %}" class="btn btn-primary">Back</a></button>
+	
+
+	
+</form>
+
+
+
+</body>
+</html>

@@ -4,10 +4,16 @@
 	<title></title>
 </head>
 <body>
-<h2><a href="">Read Question/take test</a></h2>
-<h2><a href="">Create New Question</a></h2>
-<h2><a href="">Update Question</a></h2>
-<h2><a href="">Delete Question</a></h2>
+<h1 style="font-size:30px;">Online Quiz</h1>
+<h3>select language:<br>
+	
+{% for category in cat %}
+	<a href="">{{category}}</a><br>
+{% endfor %}</h3>
+<!-- <h4><a href="">Read Question/take test</a></h4> -->
+<h4><a href="{% url 'createQuestion' %}">Create New Question</a></h4>
+<h4><a href="">Update Question</a></h4>
+<h4><a href="">Delete Question</a></h4>
 
 </body>
 </html>

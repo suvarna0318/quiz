@@ -6,12 +6,12 @@ class student(models.Model):
 
 #Create your models here.
 class Category(models.Model):
-	cateory_name=models.CharField(max_length=250, unique=True)
+	name=models.CharField(max_length=250, unique=True)
 	description=models.TextField(max_length=250)
 	is_active= models.BooleanField(default='False')
 	#sequence=
 	def __str__(self):
-		return self.cateory_name
+		return self.name
 
 
 class Question(models.Model):

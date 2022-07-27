@@ -1,0 +1,21 @@
+
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	
+<form action="#" method="post">
+{% csrf_token %}
+<fieldset>
+    <legend><h1>Questions</h1></legend>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% for que in objects %}
+    <h3>{{forloop.counter}}.<a href="{% url 'single_question' que.id %}" style="text-decoration: none;">{{que.question_text}}<a></h3>
+    {% endfor %}
+    
+    </fieldset>
+
+</form>
+</body>
+</html>

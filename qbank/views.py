@@ -1,11 +1,23 @@
 from django.shortcuts import render,redirect
-from .models import Question
+from .models import Question,Category
 from .forms import CreateQuestionForm,CreateAnswerForm
 from django.contrib import messages
 
 # Create your views here.
 def home(request):
-	return render(request,'qbank/home.html')
+	cat=Category.objects.all()
+	que=Question.objects.all()
+
+	print(cat)
+	return render(request,'qbank/home.html',context={'objects':que,'cat':cat,})
+
+def all_questions(request):
+	que=Question.objects.all()
+	return render(request,'qbank/all_questions.html',context={'objects':que,})
+
+def single_question(request,pk=id):	
+	que=Question.objects.get(pk=pk)
+	return render(request,'qbank/single_question.html',context={'object':que,})
 
 def questions(request):
 	ans=""
@@ -17,7 +29,7 @@ def questions(request):
 		que=Question.objects.all()
 	context={'objects':que,'ans':ans}
 	# # print(context)
-	return render(request,'qbank/question.html',context)
+	return render(request,'qbank/question_ans.html',context)
 
 def createQuestion(request):
 
@@ -55,4 +67,10 @@ def createAnswer(request):
 	}
 	
 	return render(request,'qbank/create_ans.html',context)
+
+def delete_question(request,id):
+	que=Question.objects.get(id=id)
+	que.delete()
+	return redirect('all_questions')
+
 
